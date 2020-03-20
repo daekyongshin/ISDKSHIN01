@@ -11,8 +11,8 @@
   DTS:LocaleID="1042"
   DTS:ObjectName="Package"
   DTS:PackageType="5"
-  DTS:VersionBuild="1"
-  DTS:VersionGUID="{DF5010DC-741D-4EA5-B34C-749FC614F918}">
+  DTS:VersionBuild="2"
+  DTS:VersionGUID="{BA957FFD-FDEC-4215-8911-47FEC228D240}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -57,11 +57,18 @@
     design-time-name="Package">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="169.6,41.6"
           Id="Package\SQL 실행 태스크"
           TopLeft="214.499996803701,78.5777756961776" />
+        <AnnotationLayout
+          Text="이건 주석입니다."
+          ParentId="Package"
+          FontInfo="{assembly:Null}"
+          Size="120,60"
+          Id="e534058d-e5d5-414d-b212-4a7deec0a747"
+          TopLeft="271.999995946884,164.66666230449" />
       </GraphLayout>
     </LayoutInfo>
   </Package>
