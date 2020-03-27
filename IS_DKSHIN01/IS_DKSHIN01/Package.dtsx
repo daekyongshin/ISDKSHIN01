@@ -11,11 +11,36 @@
   DTS:LocaleID="1042"
   DTS:ObjectName="Package"
   DTS:PackageType="5"
-  DTS:VersionBuild="2"
-  DTS:VersionGUID="{BA957FFD-FDEC-4215-8911-47FEC228D240}">
+  DTS:VersionBuild="11"
+  DTS:VersionGUID="{C3E9B44E-1511-4BC6-8F00-FC6917D9D507}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DKSHINORCL.system]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{4A1A4F6D-0604-4B1F-9B76-9F9F73405358}"
+      DTS:ObjectName="DKSHINORCL.system">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=DKSHINORCL;User ID=dkshin;Provider=OraOLEDB.Oracle.1;Persist Security Info=True;">
+          <DTS:Password
+            DTS:Name="Password"
+            Sensitive="1"
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAw9JmsYK//0GnLFZoV1DETgAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAADkJuskXkPxF01Wdrat94CzsN6YyEohYvchMeZuWINzBQAAAAAOgAAAAAIAACAAAAD1TI8E8TbRytDMs8U2MN/PpnmZOMnnwVHDU3bxanikfyAAAAANQRoOhDUILPNIHR/AHZbzAdgL6lnwa5ZoLoi2n7/EFUAAAAALN2q6InD7513L/L4xybjjQlmi3sB2VpEONv+mmKk8IYmAQVjSAOleRba4mFebxFe8h3v9PtlTBy6mk4CYbw/s</DTS:Password>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[dkshin\sql2k17.Adventureworks2016]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{0C300660-87A5-4B4F-9802-C00AE22073DB}"
+      DTS:ObjectName="dkshin\sql2k17.Adventureworks2016">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=dkshin\sql2k17;Initial Catalog=Adventureworks2016;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
     <DTS:ConnectionManager
       DTS:refId="Package.ConnectionManagers[DKSHIN\SQL2k17.TEST]"
       DTS:CreationName="ADO.NET:System.Data.SqlClient.SqlConnection, System.Data, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"
@@ -26,6 +51,16 @@
           DTS:ConnectionString="Data Source=DKSHIN\SQL2k17;Initial Catalog=TEST;Integrated Security=True;Application Name=SSIS-Package-{F8282A0A-C4F8-46B5-A85D-906630C2824F}DKSHIN\SQL2k17.TEST;" />
       </DTS:ObjectData>
     </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Excel 연결 관리자]"
+      DTS:CreationName="EXCEL"
+      DTS:DTSID="{B0529E1B-8C0E-45ED-B552-7B7EBF413BB7}"
+      DTS:ObjectName="Excel 연결 관리자">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Provider=Microsoft.ACE.OLEDB.16.0;Data Source=D:\Temp\BNP_테스트엑셀.xlsx;Extended Properties=&quot;EXCEL 12.0 XML;HDR=YES&quot;;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
   </DTS:ConnectionManagers>
   <DTS:Variables />
   <DTS:Executables>
@@ -33,6 +68,7 @@
       DTS:refId="Package\SQL 실행 태스크"
       DTS:CreationName="Microsoft.ExecuteSQLTask"
       DTS:Description="SQL 실행 태스크"
+      DTS:Disabled="True"
       DTS:DTSID="{0F84FFF4-E747-4ECA-9EE5-EBE749F6FDE3}"
       DTS:ExecutableType="Microsoft.ExecuteSQLTask"
       DTS:LocaleID="-1"
@@ -43,6 +79,251 @@
         <SQLTask:SqlTaskData
           SQLTask:Connection="{F8282A0A-C4F8-46B5-A85D-906630C2824F}"
           SQLTask:SqlStatementSource="SELECT 1;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\데이터 흐름 태스크"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="데이터 흐름 태스크"
+      DTS:DTSID="{6FC5C00D-1F3F-4B52-9E4C-CA9D459EC595}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="데이터 흐름 태스크"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\데이터 흐름 태스크\OLE DB 대상"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB 대상;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All rights reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB 대상"
+              name="OLE DB 대상"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="명령이 종료되기 전의 제한 시간 값(초)입니다. 값 0은 제한 시간이 없음을 나타냅니다."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="행 집합을 여는 데 사용되는 데이터베이스 개체의 이름을 지정합니다."
+                  name="OpenRowset">[dbo].[SalesHeader2]</property>
+                <property
+                  dataType="System.String"
+                  description="행 집합을 여는 데 사용되는 데이터베이스 개체의 이름이 들어 있는 변수를 지정합니다."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="실행할 SQL 명령입니다."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="데이터 원본에서 코드 페이지 정보를 사용할 수 없을 때 사용할 열 코드 페이지를 지정합니다."
+                  name="DefaultCodePage">949</property>
+                <property
+                  dataType="System.Boolean"
+                  description="문자 데이터를 설명할 때 DefaultCodePage 속성 값을 사용하도록 합니다."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="데이터베이스에 액세스하는 데 사용되는 모드를 지정합니다."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.Boolean"
+                  description="ID 열에 제공된 값을 대상에 복사할지 여부를 나타냅니다. false인 경우 ID 열의 값이 대상에서 자동 생성됩니다. 빠른 로드를 사용하는 경우에만 적용됩니다."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Null 포함 열을 대상에 Null로 삽입할지 여부를 나타냅니다. false인 경우 Null 포함 열은 지정된 기본값으로 대상에 삽입됩니다. 빠른 로드를 사용하는 경우에만 적용됩니다."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="빠른 로드와 함께 사용할 옵션을 지정합니다. 빠른 로드를 사용하는 경우에만 적용됩니다."
+                  name="FastLoadOptions"></property>
+                <property
+                  dataType="System.Int32"
+                  description="데이터 삽입 도중 커밋이 수행되는 시점을 지정합니다. 값을 0으로 지정하면 데이터 삽입 완료 시에 커밋이 한 번 수행됩니다. 빠른 로드를 사용하는 경우에만 적용됩니다."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\데이터 흐름 태스크\OLE DB 대상.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[dkshin\sql2k17.Adventureworks2016]"
+                  connectionManagerRefId="Package.ConnectionManagers[dkshin\sql2k17.Adventureworks2016]"
+                  description="데이터베이스에 액세스하는 데 사용되는 OLE DB 런타임 연결입니다."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\데이터 흐름 태스크\OLE DB 대상.Inputs[OLE DB 대상 입력]"
+                  errorOrTruncationOperation="삽입"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB 대상 입력">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\데이터 흐름 태스크\OLE DB 대상.Inputs[OLE DB 대상 입력].Columns[SalesOrderId]"
+                      cachedDataType="i4"
+                      cachedName="SalesOrderId"
+                      externalMetadataColumnId="Package\데이터 흐름 태스크\OLE DB 대상.Inputs[OLE DB 대상 입력].ExternalColumns[SalesOrderId]"
+                      lineageId="Package\데이터 흐름 태스크\OLE DB 원본.Outputs[OLE DB 원본 출력].Columns[SalesOrderId]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\데이터 흐름 태스크\OLE DB 대상.Inputs[OLE DB 대상 입력].ExternalColumns[SalesOrderId]"
+                      dataType="i4"
+                      name="SalesOrderId" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\데이터 흐름 태스크\OLE DB 대상.Outputs[OLE DB 대상 오류 출력]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB 대상 오류 출력"
+                  synchronousInputId="Package\데이터 흐름 태스크\OLE DB 대상.Inputs[OLE DB 대상 입력]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\데이터 흐름 태스크\OLE DB 대상.Outputs[OLE DB 대상 오류 출력].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\데이터 흐름 태스크\OLE DB 대상.Outputs[OLE DB 대상 오류 출력].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\데이터 흐름 태스크\OLE DB 대상.Outputs[OLE DB 대상 오류 출력].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\데이터 흐름 태스크\OLE DB 대상.Outputs[OLE DB 대상 오류 출력].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\데이터 흐름 태스크\OLE DB 원본"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB 원본;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All rights reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB 원본"
+              name="OLE DB 원본"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="명령이 종료되기 전의 제한 시간 값(초)입니다. 값 0은 제한 시간이 없음을 나타냅니다."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="행 집합을 여는 데 사용되는 데이터베이스 개체의 이름을 지정합니다."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="행 집합을 여는 데 사용되는 데이터베이스 개체의 이름이 들어 있는 변수를 지정합니다."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="실행할 SQL 명령입니다."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT SalesOrderId FROM dbo.SalesHeader
+WHERE OrderDate Between ? AND ?</property>
+                <property
+                  dataType="System.String"
+                  description="실행할 SQL 명령이 들어 있는 변수입니다."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="데이터 원본에서 코드 페이지 정보를 사용할 수 없을 때 사용할 열 코드 페이지를 지정합니다."
+                  name="DefaultCodePage">949</property>
+                <property
+                  dataType="System.Boolean"
+                  description="문자 데이터를 설명할 때 DefaultCodePage 속성 값을 사용하도록 합니다."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="데이터베이스에 액세스하는 데 사용되는 모드를 지정합니다."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="SQL 명령의 매개 변수와 변수 사이의 매핑입니다."
+                  name="ParameterMapping">"매개 변수0:Input",{92AD98D2-19F6-42A4-8AA3-589C7E3BAD79};"매개 변수1:Input",{7FEE8588-45FA-4A24-A559-E29BE3760019};</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\데이터 흐름 태스크\OLE DB 원본.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[dkshin\sql2k17.Adventureworks2016]"
+                  connectionManagerRefId="Package.ConnectionManagers[dkshin\sql2k17.Adventureworks2016]"
+                  description="데이터베이스에 액세스하는 데 사용되는 OLE DB 런타임 연결입니다."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\데이터 흐름 태스크\OLE DB 원본.Outputs[OLE DB 원본 출력]"
+                  name="OLE DB 원본 출력">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\데이터 흐름 태스크\OLE DB 원본.Outputs[OLE DB 원본 출력].Columns[SalesOrderId]"
+                      dataType="i4"
+                      errorOrTruncationOperation="변환"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\데이터 흐름 태스크\OLE DB 원본.Outputs[OLE DB 원본 출력].ExternalColumns[SalesOrderId]"
+                      lineageId="Package\데이터 흐름 태스크\OLE DB 원본.Outputs[OLE DB 원본 출력].Columns[SalesOrderId]"
+                      name="SalesOrderId"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\데이터 흐름 태스크\OLE DB 원본.Outputs[OLE DB 원본 출력].ExternalColumns[SalesOrderId]"
+                      dataType="i4"
+                      name="SalesOrderId" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\데이터 흐름 태스크\OLE DB 원본.Outputs[OLE DB 원본 오류 출력]"
+                  isErrorOut="true"
+                  name="OLE DB 원본 오류 출력">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\데이터 흐름 태스크\OLE DB 원본.Outputs[OLE DB 원본 오류 출력].Columns[SalesOrderId]"
+                      dataType="i4"
+                      lineageId="Package\데이터 흐름 태스크\OLE DB 원본.Outputs[OLE DB 원본 오류 출력].Columns[SalesOrderId]"
+                      name="SalesOrderId" />
+                    <outputColumn
+                      refId="Package\데이터 흐름 태스크\OLE DB 원본.Outputs[OLE DB 원본 오류 출력].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\데이터 흐름 태스크\OLE DB 원본.Outputs[OLE DB 원본 오류 출력].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\데이터 흐름 태스크\OLE DB 원본.Outputs[OLE DB 원본 오류 출력].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\데이터 흐름 태스크\OLE DB 원본.Outputs[OLE DB 원본 오류 출력].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\데이터 흐름 태스크.Paths[OLE DB 원본 출력]"
+              endId="Package\데이터 흐름 태스크\OLE DB 대상.Inputs[OLE DB 대상 입력]"
+              name="OLE DB 원본 출력"
+              startId="Package\데이터 흐름 태스크\OLE DB 원본.Outputs[OLE DB 원본 출력]" />
+          </paths>
+        </pipeline>
       </DTS:ObjectData>
     </DTS:Executable>
   </DTS:Executables>
@@ -61,16 +342,79 @@
         <NodeLayout
           Size="169.6,41.6"
           Id="Package\SQL 실행 태스크"
-          TopLeft="214.499996803701,78.5777756961776" />
+          TopLeft="107.999998390675,27.7333325986509" />
+        <NodeLayout
+          Size="182.4,41.6"
+          Id="Package\데이터 흐름 태스크"
+          TopLeft="100.499998502433,121.333330119098" />
         <AnnotationLayout
           Text="이건 주석입니다."
           ParentId="Package"
           FontInfo="{assembly:Null}"
-          Size="120,60"
+          Size="120,40"
           Id="e534058d-e5d5-414d-b212-4a7deec0a747"
           TopLeft="271.999995946884,164.66666230449" />
       </GraphLayout>
     </LayoutInfo>
   </Package>
+  <TaskHost
+    design-time-name="Package\데이터 흐름 태스크">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="150.4,41.6"
+          Id="Package\데이터 흐름 태스크\OLE DB 대상"
+          TopLeft="311.2,168.8" />
+        <NodeLayout
+          Size="150.4,41.6"
+          Id="Package\데이터 흐름 태스크\OLE DB 원본"
+          TopLeft="312.499995343387,78.5777756961776" />
+        <EdgeLayout
+          Id="Package\데이터 흐름 태스크.Paths[OLE DB 원본 출력]"
+          TopLeft="387.049997671694,120.177775696178">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,48.6222243038224"
+              Start="0,0"
+              End="0,41.1222243038224">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,41.1222243038224" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\데이터 흐름 태스크\OLE DB 대상">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\데이터 흐름 태스크\OLE DB 원본">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
 </Objects>]]></DTS:DesignTimeProperties>
 </DTS:Executable>
