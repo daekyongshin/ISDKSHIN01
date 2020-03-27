@@ -11,8 +11,8 @@
   DTS:LocaleID="1042"
   DTS:ObjectName="Package"
   DTS:PackageType="5"
-  DTS:VersionBuild="15"
-  DTS:VersionGUID="{4D402BBE-42C9-46FB-B922-A54B11EFF32D}">
+  DTS:VersionBuild="17"
+  DTS:VersionGUID="{ECD19AF3-69D2-404E-B006-6214CA2439DC}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -27,7 +27,7 @@
           <DTS:Password
             DTS:Name="Password"
             Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAw9JmsYK//0GnLFZoV1DETgAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAACvtl5E0xWaj8NiBzpalqh+yJPKOHl0aeZpxO+A7b9qYQAAAAAOgAAAAAIAACAAAADLK6NWvIi7Q6kSST53hr1IjxV8jiVvlZiqQdbtymRRWiAAAAA1LZ2obu7QzmBiOyF1LzK0Ch10RawPI8XPVGS6bhzEG0AAAADuIocFP8AFqy4T7SMOYGEUSi/xYaurd07rS7L0LNBACu/khB7UWwCOUsm1mb5Kc1Jv6N9pb1asLKQLpsa18m/f</DTS:Password>
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAw9JmsYK//0GnLFZoV1DETgAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAADR7W2wD9+UNjphv5GUqCzhYxzwOWPqdC34kGsVe8cg8gAAAAAOgAAAAAIAACAAAAB/A3bSbyo0g5/6eBX2QhOOSLUegDpODswWFeOogR9/lyAAAABaCJ5hBvSWHfrXmSDhIAMgjA7FJWMq23RtIbZJevpsgEAAAAAa29Ns6PWBA7QEqAsa8n7q94U32TP0tsPmBAwzPGtS7Fkxp4R+6UUl9vKUdug4HeJCLIQ3H1U5PQUBOK5c85cN</DTS:Password>
         </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>
@@ -348,10 +348,10 @@ WHERE OrderDate Between ? AND ?</property>
           Id="Package\데이터 흐름 태스크"
           TopLeft="100.499998502433,121.333330119098" />
         <AnnotationLayout
-          Text="이건 주석입니다.1"
+          Text="이건 주석입니다.  2"
           ParentId="Package"
           FontInfo="{assembly:Null}"
-          Size="126.4,40"
+          Size="134.4,40"
           Id="e534058d-e5d5-414d-b212-4a7deec0a747"
           TopLeft="271.999995946884,164.66666230449" />
       </GraphLayout>
